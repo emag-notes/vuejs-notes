@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js Sandbox</title>
+</head>
+<body>
+
+<div id="app">
+  {{ message }}
+</div>
+
+<div id="app-2">
+  <span v-bind:title="message">Hover your mouse over me for a few seconds to see my dynamically bound title!</span>
+</div>
+
+<div id="app-3">
+  <span v-if="seen">Now you see me</span>
+</div>
+
+<div id="app-4">
+  <ol>
+    <li v-for="todo in todos">
+      {{ todo.text }}
+    </li>
+  </ol>
+</div>
+
+<div id="app-5">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">Reverse!</button>
+</div>
+
+<div id="app-6">
+  <p>{{ message }}</p>
+  <input v-model="message"/>
+</div>
+
+<div id="app-7">
+  <ol>
+    <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+  </ol>
+</div>
+
+<div id="app-8">
+  <p>Original message: "{{ message }}"</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+
+<div id="app-9">
+  {{ fullName }}
+</div>
+
+<div id="app-10">
+  <p>Ask a yes/no question:
+    <input v-model="question">
+  </p>
+  <p>{{ answer }}</p>
+</div>
+
+<div id="todo-list-example">
+  <input
+    v-model="newTodoText"
+    v-on:keyup.enter="addNewTodo"
+    placeholder="Add a todo"
+  >
+  <ul>
+    <li
+      is="todo-item"
+      v-for="(todo, index) in todos"
+      v-bind:key="todo.id"
+      v-bind:title="todo.title"
+      v-on:remove="todos.splice(index, 1)"
+    ></li>
+  </ul>
+</div>
+
+</div>
+<script src="//unpkg.com/vue"></script>
+<script src="//cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
